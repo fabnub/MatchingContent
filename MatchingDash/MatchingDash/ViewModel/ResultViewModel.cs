@@ -11446,8 +11446,10 @@ namespace MatchingDash.ViewModel
                                                              ((student.location == 1 || student.location == 3 || student.location == 4 || student.location == 5) && teacher.District == "McKinney")
                                                              || ((student.location == 1 || student.location == 3 || student.location == 4 || student.location == 5) && teacher.District == "Prosper"))
                                 location = true;
+                            //Add location true since it doesn't matter any more as parameter
+                            location = true;
 
-                            if (!string.IsNullOrEmpty(student.Day) && student.Day.Equals(day) && subject && location)
+                            if (!string.IsNullOrEmpty(student.Day) && student.Day.Contains(day) && subject && location)
                             {
                                 Studentimes[0] = student.StartTime;
                                 Studentimes[1] = student.EndTime;
@@ -11491,7 +11493,7 @@ namespace MatchingDash.ViewModel
                                 }
                             }
                             //check if student group has another available day
-                            if (!string.IsNullOrEmpty(student.OtherDay1) && student.OtherDay1.Equals(day) && subject && location)
+                            if (!string.IsNullOrEmpty(student.OtherDay1) && student.OtherDay1.Contains(day) && subject && location)
                             {
                                 Studentimes[0] = student.OtherStartTime1;
                                 Studentimes[1] = student.OtherEndTime1;
@@ -11534,7 +11536,7 @@ namespace MatchingDash.ViewModel
 
                                 }
                             }
-                            if (!string.IsNullOrEmpty(student.OtherDay2) && student.OtherDay2.Equals(day) && subject && location)
+                            if (!string.IsNullOrEmpty(student.OtherDay2) && student.OtherDay2.Contains(day) && subject && location)
                             {
                                 Studentimes[0] = student.OtherStartTime2;
                                 Studentimes[1] = student.OtherEndTime2;
@@ -11574,7 +11576,7 @@ namespace MatchingDash.ViewModel
                                     }
                                 }
                             }
-                            if (!string.IsNullOrEmpty(student.OtherDay3) && student.OtherDay3.Equals(day) && subject && location)
+                            if (!string.IsNullOrEmpty(student.OtherDay3) && student.OtherDay3.Contains(day) && subject && location)
                             {
                                 Studentimes[0] = student.OtherStartTime3;
                                 Studentimes[1] = student.OtherEndTime3;
@@ -11614,7 +11616,7 @@ namespace MatchingDash.ViewModel
                                     }
                                 }
                             }
-                            if (!string.IsNullOrEmpty(student.OtherDay4) && student.OtherDay4.Equals(day) && subject && location)
+                            if (!string.IsNullOrEmpty(student.OtherDay4) && student.OtherDay4.Contains(day) && subject && location)
                             {
                                 Studentimes[0] = student.OtherStartTime4;
                                 Studentimes[1] = student.OtherEndTime4;
