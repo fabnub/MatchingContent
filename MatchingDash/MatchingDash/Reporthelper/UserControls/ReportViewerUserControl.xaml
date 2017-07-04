@@ -1,0 +1,15 @@
+﻿<UserControl x:Class="MatchingDash.Reporthelper.UserControls.ReportViewerUserControl"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:Controller="clr-namespace:MatchingDash.Shared"
+    xmlns:reports="clr-namespace:Microsoft.Reporting.WinForms;assembly=Microsoft.ReportViewer.WinForms"             
+    MinWidth="200" MinHeight="150"
+    >
+
+    <WindowsFormsHost>
+        <reports:ReportViewer 
+            x:Name="rreportViewer"
+            ProcessingMode="Local"
+            />
+    </WindowsFormsHost>
+</UserControl>

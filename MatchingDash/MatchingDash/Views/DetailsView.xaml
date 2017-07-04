@@ -1,0 +1,198 @@
+﻿<Controller:DockManager x:Class="MatchingDash.Views.DetailsView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:Controller="clr-namespace:MatchingDash.Shared"
+              xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"      
+             xmlns:mvvm="http://www.galasoft.ch/mvvmlight"
+             DataContext="{Binding Result, Source={StaticResource Locator}}"
+             mc:Ignorable="d" 
+                        Height="900" Width="1200"
+             d:DesignHeight="800" d:DesignWidth="1200" Title="DETAILS VIEW">
+    <Controls:FlipView Height="Auto" 
+                   IsBannerEnabled="True" 
+                  
+                   Margin="0, 0, 10, 0">
+        <Controls:FlipView.Items>
+            <Grid>
+                <Grid.RowDefinitions>
+
+                    <!--<RowDefinition Height="400"></RowDefinition>
+            <RowDefinition Height="300*"></RowDefinition>-->
+
+                    <RowDefinition   Height="60"/>
+                    <RowDefinition   Height="60"/>
+                    <RowDefinition   Height="60"/>
+                    <RowDefinition   Height="60"/>
+                    <RowDefinition   Height="60"/>
+                    <RowDefinition   Height="100"/>
+                    <RowDefinition   Height="60"/>
+                    <RowDefinition   Height="*"/>
+                </Grid.RowDefinitions>
+                <Label Content="STUDENT DETAILS  "   VerticalAlignment="Top" HorizontalAlignment="Center" Height="Auto" Grid.Row="0" FontWeight="Bold" FontSize="20"  Width="Auto"  />
+                <Label Content="First Name" HorizontalAlignment="Left"  VerticalAlignment="Top" Height="43" Grid.Row="1" Margin="10,7,0,0" Width="103" />
+                <Label  HorizontalAlignment="Left" Content="{Binding Step2Student.FirstName}"  VerticalAlignment="Top" Height="43" Grid.Row="1" Margin="145,7,0,0" Width="194" />
+                <Label Content="Last Name" HorizontalAlignment="Left"  VerticalAlignment="Top" Height="40" Grid.Row="1" Margin="364,10,0,0" Width="99" />
+                <Label  HorizontalAlignment="Left" Content="{Binding Step2Student.LastName}"  VerticalAlignment="Top" Height="40" Grid.Row="1" Margin="482,10,0,0" Width="194" />
+                <Label Grid.Row="1" Content="UNT Email" HorizontalAlignment="Left" Margin="700,14,0,0" VerticalAlignment="Top" Height="36" Width="97"/>
+                <Label Grid.Row="1" Content="{Binding Step2Student.Email}" HorizontalAlignment="Left" Margin="818,14,0,0" VerticalAlignment="Top" Height="40" Width="318"/>
+                <Label Grid.Row="2" Content="Major(math or science)" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="187" Height="40"/>
+                <Label Grid.Row="2" Content="{Binding Step2Student.Major}" HorizontalAlignment="Left" Margin="202,10,0,0" VerticalAlignment="Top" Height="40" Width="145"/>
+                <Label Content="Mobile Phone" HorizontalAlignment="Left" Margin="367,10,0,0" Grid.Row="2" VerticalAlignment="Top" Width="121" Height="40"/>
+                <Label Content="{Binding Step2Student.Phone}" HorizontalAlignment="Left" Margin="506,10,0,0" Grid.Row="2" VerticalAlignment="Top" Height="36" Width="189"/>
+                <Label Content="Do You Have Your Own Transportation" HorizontalAlignment="Left" Margin="734,10,0,0" Grid.Row="2" VerticalAlignment="Top" Width="292" Height="40"/>
+                <Label Content="{Binding Step2Student.Transportation}" HorizontalAlignment="Left" Margin="1046,10,0,0" Grid.Row="2" VerticalAlignment="Top" Height="36" Width="104"/>
+                <Label Content="If Neccessary, would you be willing to drive someone" HorizontalAlignment="Left" Margin="15,10,0,0" Grid.Row="3" VerticalAlignment="Top" Width="414" Height="40"/>
+                <Label Content="{Binding Step2Student.WillingToDrive}" HorizontalAlignment="Left" Margin="458,10,0,0" Grid.Row="3" VerticalAlignment="Top" Height="36" Width="88"/>
+                <Label Content="If necessary, would you be willing to teach alone" HorizontalAlignment="Left" Margin="567,10,0,0" Grid.Row="3" VerticalAlignment="Top" Width="364" Height="40"/>
+                <Label Content="{Binding Step2Student.WillingToTeach}" HorizontalAlignment="Left" Margin="953,10,0,0" Grid.Row="3" VerticalAlignment="Top" Height="36" Width="86"/>
+                <Label Content="Preferred Days" HorizontalAlignment="Left" Margin="818,10,0,0" Grid.Row="4" VerticalAlignment="Top" Height="40"/>
+                <Label Content="{Binding Step2Student.PreferredDays}" HorizontalAlignment="Left" Margin="953,10,0,0" Grid.Row="4" Height="36" VerticalAlignment="Top"/>
+                <Label Content="Do you live on campus" HorizontalAlignment="Left" Margin="15,10,0,0" Grid.Row="4" VerticalAlignment="Top" Width="182" Height="40"/>
+                <Label Content="{Binding Step2Student.Campus}" HorizontalAlignment="Left" Margin="236,10,0,0" Grid.Row="4" VerticalAlignment="Top" Height="36" Width="74"/>
+                <Label Content="If no, what town do you live in" HorizontalAlignment="Left" Margin="346,10,0,0" Grid.Row="4" VerticalAlignment="Top" Width="237" Height="40"/>
+                <Label Content="{Binding Step2Student.Town}" HorizontalAlignment="Left" Margin="614,10,0,0" Grid.Row="4" VerticalAlignment="Top" Height="36" Width="170"/>
+                <Label Content="Please rank your district preference(1-4. 1=most preferred and 4=least preffered)" HorizontalAlignment="Left" Margin="10,10,0,0" Grid.Row="5" VerticalAlignment="Top" Width="624" Height="35"/>
+                <Label Content="Denton" HorizontalAlignment="Left" Margin="19,50,0,0" Grid.Row="5" VerticalAlignment="Top" Width="72" Height="40"/>
+                <Label Content="{Binding Step2Student.DistrictDenton}" HorizontalAlignment="Left" Margin="111,41,0,0" Grid.Row="5" VerticalAlignment="Top" Height="36" Width="69"/>
+                <Label Content="Forth Worth" HorizontalAlignment="Left" Margin="202,50,0,0" Grid.Row="5" VerticalAlignment="Top" Width="108" Height="40"/>
+                <Label Content="{Binding Step2Student.DistrictForthWorth}" HorizontalAlignment="Left" Margin="346,41,0,0" Grid.Row="5" VerticalAlignment="Top" Height="36" Width="83"/>
+                <Label Content="Lewisville" HorizontalAlignment="Left" Margin="464,50,0,0" Grid.Row="5" VerticalAlignment="Top" Width="82" Height="40"/>
+                <Label Content="{Binding Step2Student.DistrictLewisville}" HorizontalAlignment="Left" Margin="594,41,0,0" Grid.Row="5" VerticalAlignment="Top" Height="36" Width="82"/>
+                <Label Content="McKinney" HorizontalAlignment="Left" Margin="688,50,0,0" Grid.Row="5" VerticalAlignment="Top" Width="96" Height="40"/>
+                <Label Content="{Binding Step2Student.DistrictMckinney}" HorizontalAlignment="Left" Margin="823,41,0,0" Grid.Row="5" VerticalAlignment="Top" Height="36" Width="96"/>
+                <Label Content="Anything else you need to know for scheduling your field placement ?" HorizontalAlignment="Left" Margin="19,10,0,0" Grid.Row="6" VerticalAlignment="Top" Width="514" Height="40"/>
+                <Label Content="{Binding Step2Student.AnythingElseScheduling}" HorizontalAlignment="Left" Margin="567,10,0,0" Grid.Row="6" VerticalAlignment="Top" Height="36" Width="394"/>
+                <DataGrid Name="step2Stu" Grid.Row="7"  HorizontalAlignment="Left" VerticalAlignment="Top" Width="750" MinHeight="320" Height="Auto" 
+                  AutoGenerateColumns="False"  ItemsSource="{Binding Step2Student.Schedule,Mode=TwoWay}"
+                  RenderOptions.ClearTypeHint="Enabled"
+                  TextOptions.TextFormattingMode="Display"
+                  HeadersVisibility="All" Margin="111,10,0,0"
+                  >
+                    <DataGrid.Style>
+                        <Style BasedOn="{StaticResource MetroDataGrid}"
+                       TargetType="{x:Type DataGrid}">
+                            <Setter Property="AlternatingRowBackground"
+                            Value="{DynamicResource GrayBrush10}" />
+                        </Style>
+                    </DataGrid.Style>
+                    <DataGrid.RowStyle>
+                        <Style BasedOn="{StaticResource MetroDataGridRow}"
+                       TargetType="{x:Type DataGridRow}"/>
+                    </DataGrid.RowStyle>
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="HOUR" IsReadOnly="True" MinWidth="200"
+                                    Binding="{Binding Time}" FontWeight="Bold"  />
+                        <DataGridCheckBoxColumn ElementStyle="{DynamicResource MetroDataGridCheckBox}"
+                                        EditingElementStyle="{DynamicResource MetroDataGridCheckBox}"
+                                        Header="MONDAY" MinWidth="100"
+                                        Binding="{Binding Monday, UpdateSourceTrigger=PropertyChanged}"   />
+                        <DataGridCheckBoxColumn ElementStyle="{DynamicResource MetroDataGridCheckBox}"
+                                        EditingElementStyle="{DynamicResource MetroDataGridCheckBox}"
+                                        Header="TUESDAY" MinWidth="100"
+                                        Binding="{Binding Tuesday, UpdateSourceTrigger=PropertyChanged}"  />
+                        <DataGridCheckBoxColumn ElementStyle="{DynamicResource MetroDataGridCheckBox}"
+                                        EditingElementStyle="{DynamicResource MetroDataGridCheckBox}"
+                                        Header="WEDNESDAY" MinWidth="100"
+                                        Binding="{Binding Wednesday, UpdateSourceTrigger=PropertyChanged}" />
+                        <DataGridCheckBoxColumn ElementStyle="{DynamicResource MetroDataGridCheckBox}"
+                                        EditingElementStyle="{DynamicResource MetroDataGridCheckBox}"
+                                        Header="THURSDAY" MinWidth="100"
+                                        Binding="{Binding Thursday, UpdateSourceTrigger=PropertyChanged}" />
+                        <DataGridCheckBoxColumn ElementStyle="{DynamicResource MetroDataGridCheckBox}"
+                                        EditingElementStyle="{DynamicResource MetroDataGridCheckBox}"
+                                        Header="FRIDAY" MinWidth="100"
+                                        Binding="{Binding Friday, UpdateSourceTrigger=PropertyChanged}" />
+                    </DataGrid.Columns>
+                </DataGrid>
+            </Grid>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <!--<RowDefinition Height="400"></RowDefinition>
+            <RowDefinition Height="300*"></RowDefinition>-->
+                    <RowDefinition   Height="60"/>
+                    <RowDefinition   Height="60"/>
+                    <RowDefinition   Height="60"/>
+                    <RowDefinition   Height="60"/>
+                    <RowDefinition   Height="60"/>
+                    <!--<RowDefinition   Height="100"/>
+                    <RowDefinition   Height="60"/>-->
+                    <RowDefinition   Height="*"/>
+                </Grid.RowDefinitions>
+                <Label Content="TEACHER DETAILS  "   VerticalAlignment="Top" HorizontalAlignment="Center" Height="Auto" Grid.Row="0" FontWeight="Bold" FontSize="20"  Width="Auto" Margin="482,10,462,0" />
+                <Label Content="First Name" HorizontalAlignment="Left"  VerticalAlignment="Top" Height="31" Grid.Row="1" Margin="10,7,0,0" Width="Auto" />
+                <Label  HorizontalAlignment="Left" Content="{Binding Step2Teacher.FirstName}"  VerticalAlignment="Top" Height="35" Grid.Row="1" Margin="145,7,0,0" Width="Auto" />
+                <Label Content="Last Name" HorizontalAlignment="Left"  VerticalAlignment="Top" Height="40" Grid.Row="1" Margin="364,10,0,0" Width="Auto" />
+                <Label  HorizontalAlignment="Left" Content="{Binding Step2Teacher.LastName}"  VerticalAlignment="Top" Height="35" Grid.Row="1" Margin="482,10,0,0" Width="Auto" />
+                <Label Grid.Row="1" Content="Email" HorizontalAlignment="Left" Margin="700,14,0,0" VerticalAlignment="Top" Height="36" Width="Auto"/>
+                <Label Grid.Row="1" Content="{Binding Step2Teacher.Email}" HorizontalAlignment="Left" Margin="818,14,0,0" VerticalAlignment="Top" Height="34" Width="Auto"/>
+                <Label Grid.Row="2" Content="Grade and Subject" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="36" Width="Auto"/>
+                <Label Grid.Row="2" Content="{Binding Step2Teacher.Course}" HorizontalAlignment="Left" Margin="202,10,0,0" VerticalAlignment="Top" Height="36" Width="Auto"/>
+                <Label Content="School Phone" HorizontalAlignment="Left" Margin="367,10,0,0" Grid.Row="2" VerticalAlignment="Top" Height="36" Width="Auto"/>
+                <Label Content="{Binding Step2Teacher.SchoolPhone}" HorizontalAlignment="Left" Margin="506,10,0,0" Grid.Row="2" VerticalAlignment="Top" Height="36" Width="Auto"/>
+                <Label Content="Preferred Contact" HorizontalAlignment="Left" Margin="864,10,0,0" Grid.Row="2" VerticalAlignment="Top" Height="36" Width="Auto"/>
+                <Label Content="{Binding Step2Teacher.PreferredContact}" HorizontalAlignment="Left" Margin="1046,10,0,0" Grid.Row="2" VerticalAlignment="Top" Height="36" Width="Auto"/>
+                <Label Content="Address" HorizontalAlignment="Left" Margin="15,10,0,0" Grid.Row="3" VerticalAlignment="Top" Height="36" Width="Auto"/>
+                <Label Content="{Binding Step2Teacher.School}" HorizontalAlignment="Left" Margin="145,10,0,0" Grid.Row="3" VerticalAlignment="Top" Height="36" Width="Auto"/>
+                <Label Content="Willing to work more than pair of students" HorizontalAlignment="Left" Margin="567,10,0,0" Grid.Row="3" VerticalAlignment="Top" Height="36" Width="Auto"/>
+                <Label Content="{Binding Step2Teacher.Pair}" HorizontalAlignment="Left" Margin="953,10,0,0" Grid.Row="3" VerticalAlignment="Top" Height="36" Width="Auto"/>
+                <Label Content="Room Number" HorizontalAlignment="Left" Margin="15,10,0,0" Grid.Row="4" VerticalAlignment="Top" Height="36" Width="Auto"/>
+                <Label Content="{Binding Step2Teacher.Room}" HorizontalAlignment="Left" Margin="164,10,0,0" Grid.Row="4" VerticalAlignment="Top" Height="36" Width="Auto"/>
+                <Label Content="Cell Phone" HorizontalAlignment="Left" Margin="346,10,0,0" Grid.Row="4" VerticalAlignment="Top" Height="36" Width="Auto"/>
+                <Label Content="{Binding Step2Teacher.Phone}" HorizontalAlignment="Left" Margin="482,10,0,0" Grid.Row="4" VerticalAlignment="Top" Height="26" Width="Auto"/>
+                <Label Content="School District" HorizontalAlignment="Left" Margin="818,10,0,0" Grid.Row="4" VerticalAlignment="Top" Height="36" Width="Auto"/>
+                <Label Content="{Binding Step2Teacher.District}" HorizontalAlignment="Left" Margin="966,10,0,0" Grid.Row="4" VerticalAlignment="Top" Height="36" Width="Auto"/>
+
+                <!--<Label Content="Please rank your district preference(1-4. 1=most preferred and 4=least preffered)" HorizontalAlignment="Left" Margin="10,10,0,0" Grid.Row="5" VerticalAlignment="Top" Width="624"/>
+                <Label Content="Denton" HorizontalAlignment="Left" Margin="19,41,0,0" Grid.Row="5" VerticalAlignment="Top" Width="69"/>
+                <Label Content="{Binding Step2Student.DistrictDenton}" HorizontalAlignment="Left" Margin="111,41,0,0" Grid.Row="5" VerticalAlignment="Top" Width="69"/>
+                <Label Content="Forth Worth" HorizontalAlignment="Left" Margin="202,41,0,0" Grid.Row="5" VerticalAlignment="Top" Width="108"/>
+                <Label Content="{Binding Step2Student.DistrictForthWorth}" HorizontalAlignment="Left" Margin="346,41,0,0" Grid.Row="5" VerticalAlignment="Top" Width="83"/>
+                <Label Content="Lewisville" HorizontalAlignment="Left" Margin="464,41,0,0" Grid.Row="5" VerticalAlignment="Top" Width="82"/>
+                <Label Content="{Binding Step2Student.DistrictLewisville}" HorizontalAlignment="Left" Margin="594,41,0,0" Grid.Row="5" VerticalAlignment="Top" Width="82"/>
+                <Label Content="McKinney" HorizontalAlignment="Left" Margin="686,41,0,0" Grid.Row="5" VerticalAlignment="Top" Width="96"/>
+                <Label Content="{Binding Step2Student.DistrictMckinney}" HorizontalAlignment="Left" Margin="823,41,0,0" Grid.Row="5" VerticalAlignment="Top" Width="96"/>
+                <Label Content="Anything else you need to know for scheduling your field placement ?" HorizontalAlignment="Left" Margin="19,10,0,0" Grid.Row="6" VerticalAlignment="Top" Width="507"/>
+                <Label Content="{Binding Step2Student.AnythingElseScheduling}" HorizontalAlignment="Left" Margin="567,10,0,0" Grid.Row="6" VerticalAlignment="Top" Width="394"/>-->
+                <DataGrid Grid.Row="6"  HorizontalAlignment="Left" VerticalAlignment="Top" MinWidth="750" Width="Auto" MinHeight="400" 
+                  AutoGenerateColumns="False"  ItemsSource="{Binding Step2Teacher.Schedule,Mode=TwoWay}" IsReadOnly="True"
+                  RenderOptions.ClearTypeHint="Enabled"
+                  TextOptions.TextFormattingMode="Display"
+                  HeadersVisibility="All" Margin="111,10,333,34"
+                  >
+                    <DataGrid.Style>
+                        <Style BasedOn="{StaticResource MetroDataGrid}"
+                       TargetType="{x:Type DataGrid}">
+                            <Setter Property="AlternatingRowBackground"
+                            Value="{DynamicResource GrayBrush10}" />
+                        </Style>
+                    </DataGrid.Style>
+                    <DataGrid.RowStyle>
+                        <Style BasedOn="{StaticResource MetroDataGridRow}"
+                       TargetType="{x:Type DataGridRow}"/>
+                    </DataGrid.RowStyle>
+                    <DataGrid.Columns>
+
+                        <DataGridTextColumn 
+                                        Header="DAYS" MinWidth="140"
+                                        Binding="{Binding Days, Mode=OneWay}"   />
+                        <DataGridTextColumn Header="Sart Time" IsReadOnly="True" MinWidth="120"
+                                    Binding="{Binding StartTime}" FontWeight="Bold"  />
+                        <DataGridTextColumn Header="End Time" IsReadOnly="True" MinWidth="120"
+                                    Binding="{Binding EndTime}" FontWeight="Bold"  />
+                        <DataGridTextColumn 
+                                        Header="SUBJECT" MinWidth="140"
+                                        Binding="{Binding Subject, Mode=OneWay}"  />
+
+                        <DataGridTextColumn 
+                                        Header="GRADE" MinWidth="100"
+                                        Binding="{Binding Grade, Mode=OneWay}" />
+
+                    </DataGrid.Columns>
+                </DataGrid>
+            </Grid>
+        </Controls:FlipView.Items>
+    </Controls:FlipView>
+</Controller:DockManager>

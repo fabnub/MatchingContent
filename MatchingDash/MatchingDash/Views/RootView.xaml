@@ -1,0 +1,49 @@
+﻿<Controller:DockManager x:Class="MatchingDash.Views.RootView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+           xmlns:Controller="clr-namespace:MatchingDash.Shared"
+            xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+            xmlns:mvvm="http://www.galasoft.ch/mvvmlight"        
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+                         DataContext="{Binding Root, Source={StaticResource Locator}}"
+             mc:Ignorable="d" 
+             d:DesignHeight="200" d:DesignWidth="250" Height="200" Width="250">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition  Height="150"/>
+        </Grid.RowDefinitions>
+        <WrapPanel Grid.Row="0" HorizontalAlignment="Center" Width="auto">
+            <Controller:TileManager Title="Teacher form"    Width="100" Height="120"  >
+                <Controller:TileManager.Resources>
+                    <Color x:Key="Color1">#CC119EDA</Color>
+                </Controller:TileManager.Resources>
+                <Controller:TileManager.Background>
+                    <SolidColorBrush Color="{DynamicResource Color1}"/>
+                </Controller:TileManager.Background>
+                <Image Source="/Pics/teacher.png" Height="64" Width="64"/>
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="Click">
+                        <mvvm:EventToCommand Command="{Binding Path=GetOpenTeacher,  Mode=OneWay}"/>
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+            </Controller:TileManager>
+            <Controller:TileManager Title="Student form" TiltFactor="2" Width="100" Height="120" >
+                <Controller:TileManager.Resources>
+                    <Color x:Key="Color1">#CC119EDA</Color>
+                </Controller:TileManager.Resources>
+                <Controller:TileManager.Background>
+                    <SolidColorBrush Color="{DynamicResource Color1}"/>
+                </Controller:TileManager.Background>
+                <Image Source="/Pics/student.png" Height="64" Width="64"/>
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="Click">
+                        <mvvm:EventToCommand Command="{Binding Path=GetOpenStudent,  Mode=OneWay}"/>
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+            </Controller:TileManager>
+           
+        </WrapPanel>
+    </Grid>
+</Controller:DockManager>
