@@ -11460,9 +11460,11 @@ namespace MatchingDash.ViewModel
                                     {
                                         if ((from o in backtwoDaystimes where DateTime.Parse(o.StartTime) >= DateTime.Parse(Studentimes[0]) && DateTime.Parse(o.EndTime) <= DateTime.Parse(Studentimes[1]) select o).Count() > 0)
                                         {
-                                            BackInfo = (from o in backtwoDaystimes where DateTime.Parse(o.StartTime) >= DateTime.Parse(Studentimes[0]) && DateTime.Parse(o.EndTime) <= DateTime.Parse(Studentimes[1]) select o).First();
-
-                                            if (TwoDaysClassBack.Contains(BackInfo.Day + "-" + student.Day) || TwoDaysClassBack.Contains(student.Day + "-" + BackInfo.Day))
+                                        //    BackInfo = (from o in backtwoDaystimes where DateTime.Parse(o.StartTime) >= DateTime.Parse(Studentimes[0]) && DateTime.Parse(o.EndTime) <= DateTime.Parse(Studentimes[1]) select o).First();
+                                            List<string> BackInfoDays = (from o in backtwoDaystimes where DateTime.Parse(o.StartTime) >= DateTime.Parse(Studentimes[0]) && DateTime.Parse(o.EndTime) <= DateTime.Parse(Studentimes[1]) select o.Day).ToList();
+                                            string[] studentDays = student.Day.Split('@');
+                                         //   if (TwoDaysClassBack.Contains(BackInfo.Day + "-" + student.Day) || TwoDaysClassBack.Contains(student.Day + "-" + BackInfo.Day))
+                                            if ((TwoDaysClassBack.Contains(studentDays[0] + "-" + studentDays[1]) || TwoDaysClassBack.Contains(studentDays[1] + "-" + studentDays[0])) && studentDays.Intersect(BackInfoDays).Count()==2)                                        
                                             {
                                                 selectedcount = true;
                                                 StudentsInfo = student;
@@ -11503,9 +11505,11 @@ namespace MatchingDash.ViewModel
                                     {
                                         if ((from o in backtwoDaystimes where DateTime.Parse(o.StartTime) >= DateTime.Parse(Studentimes[0]) && DateTime.Parse(o.EndTime) <= DateTime.Parse(Studentimes[1]) select o).Count() > 0)
                                         {
-                                            BackInfo = (from o in backtwoDaystimes where DateTime.Parse(o.StartTime) >= DateTime.Parse(Studentimes[0]) && DateTime.Parse(o.EndTime) <= DateTime.Parse(Studentimes[1]) select o).First();
-                                            //if((DateTime.Parse(backtwoDaystimes[0]) >= DateTime.Parse(Studentimes[0])) && (DateTime.Parse(backtwoDaystimes[1]) <= DateTime.Parse(Studentimes[1]))){
-                                            if (TwoDaysClassBack.Contains(BackInfo.Day + "-" + student.OtherDay1) || TwoDaysClassBack.Contains(student.OtherDay1 + "-" + BackInfo.Day))
+                                      //      BackInfo = (from o in backtwoDaystimes where DateTime.Parse(o.StartTime) >= DateTime.Parse(Studentimes[0]) && DateTime.Parse(o.EndTime) <= DateTime.Parse(Studentimes[1]) select o).First();
+                                            List<string> BackInfoDays = (from o in backtwoDaystimes where DateTime.Parse(o.StartTime) >= DateTime.Parse(Studentimes[0]) && DateTime.Parse(o.EndTime) <= DateTime.Parse(Studentimes[1]) select o.Day).ToList();
+                                            string[] studentDays = student.OtherDay1.Split('@');
+                                            //   if (TwoDaysClassBack.Contains(BackInfo.Day + "-" + student.Day) || TwoDaysClassBack.Contains(student.Day + "-" + BackInfo.Day))
+                                            if ((TwoDaysClassBack.Contains(studentDays[0] + "-" + studentDays[1]) || TwoDaysClassBack.Contains(studentDays[1] + "-" + studentDays[0])) && studentDays.Intersect(BackInfoDays).Count() == 2)  
                                             {
                                                 selectedcount = true;
                                                 StudentsInfo = student;
@@ -11546,8 +11550,11 @@ namespace MatchingDash.ViewModel
                                     {
                                         if ((from o in backtwoDaystimes where DateTime.Parse(o.StartTime) >= DateTime.Parse(Studentimes[0]) && DateTime.Parse(o.EndTime) <= DateTime.Parse(Studentimes[1]) select o).Count() > 0)
                                         {
-                                            BackInfo = (from o in backtwoDaystimes where DateTime.Parse(o.StartTime) >= DateTime.Parse(Studentimes[0]) && DateTime.Parse(o.EndTime) <= DateTime.Parse(Studentimes[1]) select o).First();
-                                            if (TwoDaysClassBack.Contains(BackInfo.Day + "-" + student.OtherDay2) || TwoDaysClassBack.Contains(student.OtherDay2 + "-" + BackInfo.Day))
+                                        //    BackInfo = (from o in backtwoDaystimes where DateTime.Parse(o.StartTime) >= DateTime.Parse(Studentimes[0]) && DateTime.Parse(o.EndTime) <= DateTime.Parse(Studentimes[1]) select o).First();
+                                            List<string> BackInfoDays = (from o in backtwoDaystimes where DateTime.Parse(o.StartTime) >= DateTime.Parse(Studentimes[0]) && DateTime.Parse(o.EndTime) <= DateTime.Parse(Studentimes[1]) select o.Day).ToList();
+                                            string[] studentDays = student.OtherDay2.Split('@');
+                                            //   if (TwoDaysClassBack.Contains(BackInfo.Day + "-" + student.Day) || TwoDaysClassBack.Contains(student.Day + "-" + BackInfo.Day))
+                                            if ((TwoDaysClassBack.Contains(studentDays[0] + "-" + studentDays[1]) || TwoDaysClassBack.Contains(studentDays[1] + "-" + studentDays[0])) && studentDays.Intersect(BackInfoDays).Count() == 2)  
                                             {
                                                 selectedcount = true;
                                                 StudentsInfo = student;
@@ -11586,8 +11593,11 @@ namespace MatchingDash.ViewModel
                                     {
                                         if ((from o in backtwoDaystimes where DateTime.Parse(o.StartTime) >= DateTime.Parse(Studentimes[0]) && DateTime.Parse(o.EndTime) <= DateTime.Parse(Studentimes[1]) select o).Count() > 0)
                                         {
-                                            BackInfo = (from o in backtwoDaystimes where DateTime.Parse(o.StartTime) >= DateTime.Parse(Studentimes[0]) && DateTime.Parse(o.EndTime) <= DateTime.Parse(Studentimes[1]) select o).First();
-                                            if (TwoDaysClassBack.Contains(BackInfo.Day + "-" + student.OtherDay3) || TwoDaysClassBack.Contains(student.OtherDay3 + "-" + BackInfo.Day))
+                                        //    BackInfo = (from o in backtwoDaystimes where DateTime.Parse(o.StartTime) >= DateTime.Parse(Studentimes[0]) && DateTime.Parse(o.EndTime) <= DateTime.Parse(Studentimes[1]) select o).First();
+                                            List<string> BackInfoDays = (from o in backtwoDaystimes where DateTime.Parse(o.StartTime) >= DateTime.Parse(Studentimes[0]) && DateTime.Parse(o.EndTime) <= DateTime.Parse(Studentimes[1]) select o.Day).ToList();
+                                            string[] studentDays = student.OtherDay3.Split('@');
+                                            //   if (TwoDaysClassBack.Contains(BackInfo.Day + "-" + student.Day) || TwoDaysClassBack.Contains(student.Day + "-" + BackInfo.Day))
+                                            if ((TwoDaysClassBack.Contains(studentDays[0] + "-" + studentDays[1]) || TwoDaysClassBack.Contains(studentDays[1] + "-" + studentDays[0])) && studentDays.Intersect(BackInfoDays).Count() == 2)  
                                             {
                                                 selectedcount = true;
                                                 StudentsInfo = student;
@@ -11626,8 +11636,11 @@ namespace MatchingDash.ViewModel
                                     {
                                         if ((from o in backtwoDaystimes where DateTime.Parse(o.StartTime) >= DateTime.Parse(Studentimes[0]) && DateTime.Parse(o.EndTime) <= DateTime.Parse(Studentimes[1]) select o).Count() > 0)
                                         {
-                                            BackInfo = (from o in backtwoDaystimes where DateTime.Parse(o.StartTime) >= DateTime.Parse(Studentimes[0]) && DateTime.Parse(o.EndTime) <= DateTime.Parse(Studentimes[1]) select o).First();
-                                            if (TwoDaysClassBack.Contains(BackInfo.Day + "-" + student.OtherDay4) || TwoDaysClassBack.Contains(student.OtherDay4 + "-" + BackInfo.Day))
+                                         //   BackInfo = (from o in backtwoDaystimes where DateTime.Parse(o.StartTime) >= DateTime.Parse(Studentimes[0]) && DateTime.Parse(o.EndTime) <= DateTime.Parse(Studentimes[1]) select o).First();
+                                            List<string> BackInfoDays = (from o in backtwoDaystimes where DateTime.Parse(o.StartTime) >= DateTime.Parse(Studentimes[0]) && DateTime.Parse(o.EndTime) <= DateTime.Parse(Studentimes[1]) select o.Day).ToList();
+                                            string[] studentDays = student.OtherDay4.Split('@');
+                                            //   if (TwoDaysClassBack.Contains(BackInfo.Day + "-" + student.Day) || TwoDaysClassBack.Contains(student.Day + "-" + BackInfo.Day))
+                                            if ((TwoDaysClassBack.Contains(studentDays[0] + "-" + studentDays[1]) || TwoDaysClassBack.Contains(studentDays[1] + "-" + studentDays[0])) && studentDays.Intersect(BackInfoDays).Count() == 2)  
                                             {
                                                 selectedcount = true;
                                                 StudentsInfo = student;
