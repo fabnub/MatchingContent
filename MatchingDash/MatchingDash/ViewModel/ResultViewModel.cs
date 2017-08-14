@@ -11425,11 +11425,11 @@ namespace MatchingDash.ViewModel
                         else if (schedule.Days == "Friday" || schedule.Days == "A Friday" || schedule.Days == "B Friday")
                             day = "Friday";
                         //Shift group of students
-                        ShuffleGroupStudents(TempGroupingStudents);
+                       // ShuffleGroupStudents(TempGroupingStudents);
                         foreach (var student in TempGroupingStudents)
                         {
                             counter = 0;
-                            subject = false; location = false;
+                            subject = false; location = false;                    
                             if ((schedule.Subject == "Pre-calculus" || schedule.Subject == "Algebra 2" || schedule.Subject == "Math" || schedule.Subject == "Algebra 1" || schedule.Subject == "Pre-AP Math" || schedule.Subject == "Math Others") && (student.Major1 == "Mathematics" || student.Major1 == "Math 7-12" || student.Major2 == "Mathematics" || student.Major2 == "Math 7-12"))
                                 subject = true;
                             else if ((schedule.Subject == "Ecology" || schedule.Subject == "AP Bio" || schedule.Subject == "Biology" || schedule.Subject == "Science" || schedule.Subject == "Pre-AP Science" || schedule.Subject == "Science Others") && (student.Major1 == "Biology" || student.Major1 == "Environmental Science" || student.Major2 == "Biology" || student.Major2 == "Environmental Science"))
@@ -11458,14 +11458,15 @@ namespace MatchingDash.ViewModel
                                 {
                                     if (student.IstwoDaysback && checktwoDaysback)
                                     {
-                                        if ((from o in backtwoDaystimes where DateTime.Parse(o.StartTime) >= DateTime.Parse(Studentimes[0]) && DateTime.Parse(o.EndTime) <= DateTime.Parse(Studentimes[1]) select o).Count() > 0)
+                                        if ((from o in backtwoDaystimes where DateTime.Parse(o.StartTime) >= DateTime.Parse(Studentimes[0]) && DateTime.Parse(o.EndTime) <= DateTime.Parse(Studentimes[1])  select o).Count() > 0)
                                         {
                                         //    BackInfo = (from o in backtwoDaystimes where DateTime.Parse(o.StartTime) >= DateTime.Parse(Studentimes[0]) && DateTime.Parse(o.EndTime) <= DateTime.Parse(Studentimes[1]) select o).First();
                                             List<string> BackInfoDays = (from o in backtwoDaystimes where DateTime.Parse(o.StartTime) >= DateTime.Parse(Studentimes[0]) && DateTime.Parse(o.EndTime) <= DateTime.Parse(Studentimes[1]) select o.Day).ToList();
                                             string[] studentDays = student.Day.Split('@');
                                          //   if (TwoDaysClassBack.Contains(BackInfo.Day + "-" + student.Day) || TwoDaysClassBack.Contains(student.Day + "-" + BackInfo.Day))
-                                            if ((TwoDaysClassBack.Contains(studentDays[0] + "-" + studentDays[1]) || TwoDaysClassBack.Contains(studentDays[1] + "-" + studentDays[0])) && studentDays.Intersect(BackInfoDays).Count()==2)                                        
+                                            if ((TwoDaysClassBack.Contains(studentDays[0] + "-" + studentDays[1]) || TwoDaysClassBack.Contains(studentDays[1] + "-" + studentDays[0])) &&( BackInfoDays.Contains(studentDays[0]) || BackInfoDays.Contains(studentDays[1]))&& studentDays.Contains(schedule.Days))                                       
                                             {
+                                                BackInfo = (from o in backtwoDaystimes where (o.Day.Contains(studentDays[0]) || o.Day.Contains(studentDays[1])) && o.Day != schedule.Days select o).FirstOrDefault();
                                                 selectedcount = true;
                                                 StudentsInfo = student;
                                                 break;
@@ -11509,8 +11510,9 @@ namespace MatchingDash.ViewModel
                                             List<string> BackInfoDays = (from o in backtwoDaystimes where DateTime.Parse(o.StartTime) >= DateTime.Parse(Studentimes[0]) && DateTime.Parse(o.EndTime) <= DateTime.Parse(Studentimes[1]) select o.Day).ToList();
                                             string[] studentDays = student.OtherDay1.Split('@');
                                             //   if (TwoDaysClassBack.Contains(BackInfo.Day + "-" + student.Day) || TwoDaysClassBack.Contains(student.Day + "-" + BackInfo.Day))
-                                            if ((TwoDaysClassBack.Contains(studentDays[0] + "-" + studentDays[1]) || TwoDaysClassBack.Contains(studentDays[1] + "-" + studentDays[0])) && studentDays.Intersect(BackInfoDays).Count() == 2)  
+                                            if ((TwoDaysClassBack.Contains(studentDays[0] + "-" + studentDays[1]) || TwoDaysClassBack.Contains(studentDays[1] + "-" + studentDays[0])) && (BackInfoDays.Contains(studentDays[0]) || BackInfoDays.Contains(studentDays[1])) && studentDays.Contains(schedule.Days))
                                             {
+                                                BackInfo = (from o in backtwoDaystimes where (o.Day.Contains(studentDays[0]) || o.Day.Contains(studentDays[1])) && o.Day != schedule.Days select o).FirstOrDefault();
                                                 selectedcount = true;
                                                 StudentsInfo = student;
                                                 break;
@@ -11554,8 +11556,9 @@ namespace MatchingDash.ViewModel
                                             List<string> BackInfoDays = (from o in backtwoDaystimes where DateTime.Parse(o.StartTime) >= DateTime.Parse(Studentimes[0]) && DateTime.Parse(o.EndTime) <= DateTime.Parse(Studentimes[1]) select o.Day).ToList();
                                             string[] studentDays = student.OtherDay2.Split('@');
                                             //   if (TwoDaysClassBack.Contains(BackInfo.Day + "-" + student.Day) || TwoDaysClassBack.Contains(student.Day + "-" + BackInfo.Day))
-                                            if ((TwoDaysClassBack.Contains(studentDays[0] + "-" + studentDays[1]) || TwoDaysClassBack.Contains(studentDays[1] + "-" + studentDays[0])) && studentDays.Intersect(BackInfoDays).Count() == 2)  
+                                            if ((TwoDaysClassBack.Contains(studentDays[0] + "-" + studentDays[1]) || TwoDaysClassBack.Contains(studentDays[1] + "-" + studentDays[0])) && (BackInfoDays.Contains(studentDays[0]) || BackInfoDays.Contains(studentDays[1])) && studentDays.Contains(schedule.Days))
                                             {
+                                                BackInfo = (from o in backtwoDaystimes where (o.Day.Contains(studentDays[0]) || o.Day.Contains(studentDays[1])) && o.Day != schedule.Days select o).FirstOrDefault();
                                                 selectedcount = true;
                                                 StudentsInfo = student;
                                                 break;
@@ -11597,8 +11600,9 @@ namespace MatchingDash.ViewModel
                                             List<string> BackInfoDays = (from o in backtwoDaystimes where DateTime.Parse(o.StartTime) >= DateTime.Parse(Studentimes[0]) && DateTime.Parse(o.EndTime) <= DateTime.Parse(Studentimes[1]) select o.Day).ToList();
                                             string[] studentDays = student.OtherDay3.Split('@');
                                             //   if (TwoDaysClassBack.Contains(BackInfo.Day + "-" + student.Day) || TwoDaysClassBack.Contains(student.Day + "-" + BackInfo.Day))
-                                            if ((TwoDaysClassBack.Contains(studentDays[0] + "-" + studentDays[1]) || TwoDaysClassBack.Contains(studentDays[1] + "-" + studentDays[0])) && studentDays.Intersect(BackInfoDays).Count() == 2)  
+                                            if ((TwoDaysClassBack.Contains(studentDays[0] + "-" + studentDays[1]) || TwoDaysClassBack.Contains(studentDays[1] + "-" + studentDays[0])) && (BackInfoDays.Contains(studentDays[0]) || BackInfoDays.Contains(studentDays[1])) && studentDays.Contains(schedule.Days))
                                             {
+                                                BackInfo = (from o in backtwoDaystimes where (o.Day.Contains(studentDays[0]) || o.Day.Contains(studentDays[1])) && o.Day != schedule.Days select o).FirstOrDefault();
                                                 selectedcount = true;
                                                 StudentsInfo = student;
                                                 break;
@@ -11640,8 +11644,9 @@ namespace MatchingDash.ViewModel
                                             List<string> BackInfoDays = (from o in backtwoDaystimes where DateTime.Parse(o.StartTime) >= DateTime.Parse(Studentimes[0]) && DateTime.Parse(o.EndTime) <= DateTime.Parse(Studentimes[1]) select o.Day).ToList();
                                             string[] studentDays = student.OtherDay4.Split('@');
                                             //   if (TwoDaysClassBack.Contains(BackInfo.Day + "-" + student.Day) || TwoDaysClassBack.Contains(student.Day + "-" + BackInfo.Day))
-                                            if ((TwoDaysClassBack.Contains(studentDays[0] + "-" + studentDays[1]) || TwoDaysClassBack.Contains(studentDays[1] + "-" + studentDays[0])) && studentDays.Intersect(BackInfoDays).Count() == 2)  
+                                            if ((TwoDaysClassBack.Contains(studentDays[0] + "-" + studentDays[1]) || TwoDaysClassBack.Contains(studentDays[1] + "-" + studentDays[0])) && (BackInfoDays.Contains(studentDays[0]) || BackInfoDays.Contains(studentDays[1])) && studentDays.Contains(schedule.Days))
                                             {
+                                                BackInfo = (from o in backtwoDaystimes where (o.Day.Contains(studentDays[0]) || o.Day.Contains(studentDays[1])) && o.Day != schedule.Days select o).FirstOrDefault();
                                                 selectedcount = true;
                                                 StudentsInfo = student;
                                                 break;
