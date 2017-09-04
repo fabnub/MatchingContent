@@ -11366,7 +11366,7 @@ namespace MatchingDash.ViewModel
                             {
                                 if ((from o in teacher.BackDays where o.Subject == schedule.Subject && o.Day != schedule.Days  select o.Day).Distinct().Count() > 0)
                                 {
-                                    if ((from o in teacher.Schedule where (o.Subject == schedule.Subject && o.StartTime == schedule.StartTime && o.Days == schedule.Days) select o).Count() > 0)
+                                    if ((from o in teacher.Schedule where (o.Subject == schedule.Subject && o.StartTime == schedule.StartTime && o.Days != schedule.Days) select o).Count() > 0)
                                     {
                                         //backschedule = (from o in teacher.Schedule where (o.Days != schedule.Days && o.Subject == schedule.Subject) select o).First();
                                         //backtwoDaystimes[0] = DateTime.Parse(backschedule.StartTime).ToString("hh:mm tt");
@@ -11769,7 +11769,7 @@ namespace MatchingDash.ViewModel
                 if (Results2.Count > Results.Count())
                 {
                     Results = Results2.Distinct<TableResult>().ToList();
-                 //   NoConditionResult = Results2.ToList();
+                    NoConditionResult = Results2.ToList();
                 }
                 if (Results2.Count() == 2 * GroupingStudents.Count() || compter == 0)
                     Open = true;
